@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profesor ELE Calmecac Machtia- Pasado y Futuro</title>
-    <!-- Font Awesome para los iconos -->
+    <title>Calmecac Machtiliztli - Portal de Clases ELE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* --- RESET Y ESTILOS GENERALES --- */
+        /* ===== RESET Y ESTILOS GENERALES ===== */
         * {
             margin: 0;
             padding: 0;
@@ -15,649 +14,1020 @@
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-            background: #f8f4f0;
-            color: #2d2a2a;
-            padding: 20px;
-            line-height: 1.6;
+            font-family: 'Segoe UI', 'Roboto', system-ui, sans-serif;
+            background: #f5f0e8;
+            color: #2c241c;
+            min-height: 100vh;
         }
 
-        .container {
+        /* ===== HEADER CON NÁHUATL ===== */
+        .header-azteca {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            padding: 30px 20px 20px;
+            border-bottom: 8px solid #e8a87c;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-azteca::before {
+            content: "● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: rgba(232, 168, 124, 0.15);
+            font-size: 14px;
+            letter-spacing: 20px;
+            text-align: center;
+            padding: 8px 0;
+        }
+
+        .header-content {
             max-width: 1400px;
             margin: 0 auto;
-        }
-
-        /* --- ENCABEZADO Y SELECTOR DE IDIOMA --- */
-        .header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            padding: 30px 40px;
-            border-radius: 24px;
-            margin-bottom: 40px;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            gap: 20px;
+            position: relative;
+            z-index: 2;
         }
 
-        .header h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        .header h1 i {
-            margin-right: 15px;
-            color: #f9d77e;
-        }
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
-
-        .lang-selector {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            padding: 15px 25px;
-            border-radius: 60px;
+        .logo-section {
             display: flex;
             align-items: center;
             gap: 20px;
             flex-wrap: wrap;
         }
 
+        .logo-icon {
+            font-size: 3.5rem;
+            color: #e8a87c;
+            background: rgba(232, 168, 124, 0.15);
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #e8a87c;
+            transform: rotate(0deg);
+            transition: transform 0.6s ease;
+        }
+
+        .logo-icon:hover {
+            transform: rotate(180deg);
+        }
+
+        .logo-text h1 {
+            color: #f5f0e8;
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .logo-text h1 span {
+            color: #e8a87c;
+        }
+
+        .logo-text .subtitle {
+            color: #c4b5a5;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .logo-text .subtitle i {
+            margin: 0 8px;
+            color: #e8a87c;
+        }
+
+        /* Selector de idioma en header */
+        .lang-selector {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 60px;
+            border: 1px solid rgba(232, 168, 124, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
         .lang-selector span {
+            color: #c4b5a5;
+            font-size: 0.8rem;
             font-weight: 600;
-            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.8;
         }
 
         .lang-btn {
             background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 8px 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            color: #c4b5a5;
+            padding: 6px 16px;
             border-radius: 40px;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .lang-btn:hover, .lang-btn.active {
-            background: #f9d77e;
-            border-color: #f9d77e;
-            color: #1e3c72;
-            transform: scale(1.02);
-        }
-
-        /* --- MENSAJE DE BIENVENIDA (cambia según idioma) --- */
-        #welcomeMsg {
-            background: white;
-            padding: 18px 30px;
-            border-radius: 16px;
-            margin-bottom: 35px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border-left: 8px solid #2a5298;
-            font-size: 1.1rem;
             transition: all 0.3s;
         }
-        #welcomeMsg i {
-            margin-right: 12px;
-            color: #2a5298;
+
+        .lang-btn:hover {
+            background: rgba(232, 168, 124, 0.2);
+            border-color: #e8a87c;
+            color: white;
         }
 
-        /* --- TARJETAS DE SECCIÓN (PASADO Y FUTURO) --- */
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin: 40px 0 25px 0;
+        .lang-btn.active {
+            background: #e8a87c;
+            border-color: #e8a87c;
+            color: #1a1a2e;
+        }
+
+        /* ===== BARRA DE BÚSQUEDA ===== */
+        .search-section {
+            max-width: 1400px;
+            margin: -20px auto 30px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: 60px;
+            padding: 8px 8px 8px 28px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            border-bottom: 4px solid #e0d6cc;
-            padding-bottom: 12px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            border: 2px solid transparent;
+            transition: all 0.3s;
         }
-        .section-title i {
-            background: #2a5298;
+
+        .search-box:focus-within {
+            border-color: #e8a87c;
+            box-shadow: 0 16px 50px rgba(232, 168, 124, 0.2);
+        }
+
+        .search-box i {
+            color: #8a7a6e;
+            font-size: 1.2rem;
+            margin-right: 12px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 1.1rem;
+            padding: 14px 0;
+            background: transparent;
+            color: #2c241c;
+            font-weight: 400;
+        }
+
+        .search-box input::placeholder {
+            color: #b5a69a;
+            font-style: italic;
+        }
+
+        .search-box .search-stats {
+            background: #f5f0e8;
+            padding: 8px 18px;
+            border-radius: 40px;
+            color: #6b5f57;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* ===== FILTROS DE CATEGORÍA ===== */
+        .filter-bar {
+            max-width: 1400px;
+            margin: 20px auto 30px;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-bar label {
+            font-weight: 700;
+            color: #4a3f37;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-right: 8px;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid #e8e0d8;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #4a3f37;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .filter-btn:hover {
+            border-color: #e8a87c;
+            background: #fdf8f2;
+        }
+
+        .filter-btn.active {
+            background: #1a1a2e;
+            border-color: #1a1a2e;
             color: white;
-            padding: 12px;
+        }
+
+        .filter-btn .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 1px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-left: 6px;
+        }
+
+        .filter-btn.active .badge {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* ===== GRID DE TEMAS (ALFABÉTICO) ===== */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .alfabeto-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 30px;
+            justify-content: center;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #e8e0d8;
+        }
+
+        .alfabeto-nav a {
+            color: #4a3f37;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .alfabeto-nav a:hover {
+            background: #e8a87c;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .alfabeto-nav a.letter-active {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        /* Grid de temas */
+        .temas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 10px;
+        }
+
+        .tema-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px 22px 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            border: 1px solid #ede8e2;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tema-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(26, 26, 46, 0.10);
+            border-color: #d4c8bc;
+        }
+
+        .tema-card .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .tema-card .tema-nombre {
             font-size: 1.4rem;
-            width: 55px;
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.2;
+        }
+
+        .tema-card .tema-nombre small {
+            font-weight: 400;
+            font-size: 0.75rem;
+            color: #8a7a6e;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .tema-card .tema-icon {
+            font-size: 2.2rem;
+            color: #e8a87c;
+            flex-shrink: 0;
+            width: 50px;
             text-align: center;
         }
 
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 28px;
-            margin-bottom: 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 24px;
-            padding: 28px 20px 22px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-            transition: transform 0.25s ease, box-shadow 0.3s ease;
-            border: 1px solid #f0ebe6;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(26, 67, 113, 0.12);
-            border-color: #cbdae9;
-        }
-
-        .card-icon {
-            font-size: 2.6rem;
-            margin-bottom: 10px;
-            color: #2a5298;
-        }
-
-        .card h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .card .sub {
-            font-size: 0.9rem;
-            color: #6b5f57;
-            margin-bottom: 16px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
-
-        .card p {
-            color: #3d3732;
-            margin-bottom: 20px;
+        .tema-card .tema-desc {
+            color: #5a4f47;
+            font-size: 0.95rem;
             flex-grow: 1;
-            font-size: 0.98rem;
+            margin: 6px 0 14px;
+            line-height: 1.5;
         }
 
-        .card .tags {
+        .tema-card .tema-meta {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 18px;
+            margin-top: 8px;
+            align-items: center;
         }
 
-        .card .tags span {
+        .tema-card .categoria-tag {
             background: #f0ebe6;
             padding: 4px 14px;
             border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #3d3732;
-            letter-spacing: 0.3px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #4a3f37;
         }
 
-        .btn-detail {
-            background: transparent;
-            border: 2px solid #2a5298;
-            color: #2a5298;
-            padding: 12px 0;
-            border-radius: 60px;
+        .tema-card .status-tag {
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
             font-weight: 700;
-            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-disponible {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-desarrollo {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-proximo {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .tema-card .btn-ir {
+            margin-top: 16px;
+            padding: 10px 0;
+            background: transparent;
+            border: 2px solid #1a1a2e;
+            border-radius: 40px;
+            color: #1a1a2e;
+            font-weight: 700;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.25s;
-            width: 100%;
-            margin-top: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
         }
 
-        .btn-detail:hover {
-            background: #2a5298;
+        .tema-card .btn-ir:hover {
+            background: #1a1a2e;
             color: white;
         }
 
-        /* --- MODAL --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(4px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 20px;
+        .tema-card .btn-ir i {
+            margin-left: 8px;
+            transition: transform 0.2s;
         }
-        .modal-overlay.active {
+
+        .tema-card .btn-ir:hover i {
+            transform: translateX(4px);
+        }
+
+        .tema-card.disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .tema-card.disabled .btn-ir {
+            border-color: #b5a69a;
+            color: #b5a69a;
+            cursor: not-allowed;
+        }
+
+        .tema-card.disabled .btn-ir:hover {
+            background: transparent;
+            color: #b5a69a;
+        }
+
+        /* ===== SECCIÓN DE BIENVENIDA ===== */
+        .welcome-banner {
+            background: linear-gradient(135deg, #1a1a2e, #2d1b3d);
+            color: #f5f0e8;
+            padding: 30px 35px;
+            border-radius: 20px;
+            margin-bottom: 35px;
+            border-left: 8px solid #e8a87c;
             display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
         }
 
-        .modal-box {
-            background: white;
-            max-width: 600px;
-            width: 100%;
-            border-radius: 32px;
-            padding: 40px 35px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-            animation: slideUp 0.3s ease;
-            position: relative;
+        .welcome-banner .welcome-text {
+            flex: 1;
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(40px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .welcome-banner h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
         }
 
-        .modal-box .close-btn {
-            position: absolute;
-            top: 18px;
-            right: 24px;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #8a7a6e;
-            transition: 0.2s;
-            background: none;
-            border: none;
-        }
-        .modal-box .close-btn:hover {
-            color: #1e2f4a;
-            transform: rotate(90deg);
-        }
-
-        .modal-box h2 {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-            color: #1e3c72;
-        }
-        .modal-box h2 i {
+        .welcome-banner h2 i {
+            color: #e8a87c;
             margin-right: 14px;
         }
-        .modal-box .modal-sub {
-            font-size: 1rem;
-            color: #6b5f57;
-            margin-bottom: 20px;
-            border-bottom: 2px dashed #e0d6cc;
-            padding-bottom: 15px;
-        }
-        .modal-box p {
-            margin-bottom: 14px;
+
+        .welcome-banner p {
+            color: #c4b5a5;
+            margin-top: 6px;
             font-size: 1.05rem;
         }
-        .modal-box .example {
-            background: #f3f0ec;
-            padding: 16px 20px;
-            border-radius: 16px;
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            margin: 18px 0;
-            border-left: 6px solid #f9d77e;
-        }
 
-        .modal-box .lang-note {
-            background: #e8edf5;
-            padding: 14px 18px;
-            border-radius: 14px;
-            font-size: 0.95rem;
-            margin-top: 16px;
-            color: #1e3c72;
-        }
-        .modal-box .lang-note i {
-            margin-right: 10px;
-        }
-
-        /* --- FOOTER / GITHUB --- */
-        .github-cta {
-            margin-top: 60px;
-            text-align: center;
-            background: #1e1e24;
-            color: white;
-            padding: 40px 30px;
-            border-radius: 30px;
-        }
-        .github-cta h2 {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-        .github-cta p {
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto 24px;
-        }
-        .github-cta .btn-gh {
-            background: white;
-            color: #1e1e24;
-            padding: 16px 40px;
+        .welcome-banner .total-count {
+            background: rgba(232, 168, 124, 0.2);
+            padding: 12px 28px;
             border-radius: 60px;
             font-weight: 700;
-            font-size: 1.2rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: 0.2s;
-        }
-        .github-cta .btn-gh:hover {
-            background: #f9d77e;
-            transform: scale(1.02);
+            font-size: 1.3rem;
+            border: 2px solid rgba(232, 168, 124, 0.3);
+            white-space: nowrap;
         }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 700px) {
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-                padding: 25px;
-            }
-            .header h1 {
+        .welcome-banner .total-count span {
+            color: #e8a87c;
+            font-size: 2rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-azteca {
+            background: #1a1a2e;
+            color: #8a7a6e;
+            padding: 40px 20px 30px;
+            border-top: 8px solid #e8a87c;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-content h4 {
+            color: #e8a87c;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .footer-content p, .footer-content li {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-content ul {
+            list-style: none;
+        }
+
+        .footer-content ul li::before {
+            content: "▸ ";
+            color: #e8a87c;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 30px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5a4f47;
+        }
+
+        .footer-bottom i {
+            color: #e8a87c;
+            margin: 0 4px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .logo-text h1 {
                 font-size: 1.8rem;
             }
+            .logo-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 2.5rem;
+            }
+            .header-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
             .lang-selector {
-                width: 100%;
                 justify-content: center;
                 border-radius: 30px;
             }
-            .section-title {
-                font-size: 1.8rem;
+            .welcome-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .welcome-banner .total-count {
+                width: 100%;
+                text-align: center;
+            }
+            .search-box {
+                padding: 6px 6px 6px 18px;
+                border-radius: 40px;
+            }
+            .search-box input {
+                font-size: 0.95rem;
+                padding: 10px 0;
+            }
+            .search-box .search-stats {
+                font-size: 0.7rem;
+                padding: 4px 12px;
+            }
+            .temas-grid {
+                grid-template-columns: 1fr;
+            }
+            .alfabeto-nav {
+                gap: 4px;
+                padding: 10px 12px;
+            }
+            .alfabeto-nav a {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            .filter-bar {
+                justify-content: center;
             }
         }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .temas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Animación de entrada */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tema-card {
+            animation: fadeInUp 0.4s ease forwards;
+        }
+
+        .tema-card:nth-child(2) { animation-delay: 0.05s; }
+        .tema-card:nth-child(3) { animation-delay: 0.10s; }
+        .tema-card:nth-child(4) { animation-delay: 0.15s; }
+        .tema-card:nth-child(5) { animation-delay: 0.20s; }
+        .tema-card:nth-child(6) { animation-delay: 0.25s; }
+        .tema-card:nth-child(7) { animation-delay: 0.30s; }
+        .tema-card:nth-child(8) { animation-delay: 0.35s; }
+        .tema-card:nth-child(9) { animation-delay: 0.40s; }
+        .tema-card:nth-child(10) { animation-delay: 0.45s; }
     </style>
 </head>
 <body>
 
-<div class="container">
-
-    <!-- ENCABEZADO CON SELECTOR DE IDIOMA NATIVO -->
-    <header class="header">
-        <div>
-            <h1><i class="fas fa-chalkboard-teacher"></i> Profesor ELE</h1>
-            <p><i class="fas fa-globe-americas"></i> Enfoque en lenguas nativas: Ruso · Inglés · Japonés</p>
+<!-- ===== HEADER ===== -->
+<header class="header-azteca">
+    <div class="header-content">
+        <div class="logo-section">
+            <div class="logo-icon">
+                <i class="fas fa-feather-alt"></i>
+            </div>
+            <div class="logo-text">
+                <h1>Calmecac <span>Machtiliztli</span></h1>
+                <div class="subtitle">
+                    <i class="fas fa-quote-left"></i> 
+                    Portal de Clases · Español como Lengua Extranjera
+                    <i class="fas fa-quote-right"></i>
+                </div>
+            </div>
         </div>
+
         <div class="lang-selector">
-            <span><i class="fas fa-language"></i> L1 del alumno:</span>
+            <span><i class="fas fa-globe"></i> L1</span>
             <button class="lang-btn active" data-lang="es" onclick="changeLang('es')">🇪🇸 Español</button>
             <button class="lang-btn" data-lang="en" onclick="changeLang('en')">🇬🇧 Inglés</button>
-            <button class="lang-btn" data-lang="ru" onclick="changeLang('ru')">🇷🇺 Ruso</button>
-            <button class="lang-btn" data-lang="ja" onclick="changeLang('ja')">🇯🇵 Japonés</button>
+            <button class="lang-btn" data-lang="ru" onclick="changeLang('ru')">🇷🇺 Русский</button>
+            <button class="lang-btn" data-lang="ja" onclick="changeLang('ja')">🇯🇵 日本語</button>
         </div>
-    </header>
-
-    <!-- MENSAJE BIENVENIDA (cambia según idioma) -->
-    <div id="welcomeMsg">
-        <i class="fas fa-comment-dots"></i>
-        <span id="welcomeText">Bienvenido, profesor. Aquí tienes los materiales para enseñar Pasado y Futuro. Selecciona el idioma nativo de tu alumno para ver sugerencias específicas.</span>
     </div>
+</header>
 
-    <!-- ================= SECCIÓN PASADO ================= -->
-    <div class="section-title">
-        <i class="fas fa-history"></i> Pasado
-        <span style="font-size: 1rem; font-weight: 400; color: #6b5f57; margin-left: 10px;">4 tiempos esenciales</span>
+<!-- ===== BÚSQUEDA ===== -->
+<div class="search-section">
+    <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="buscador" placeholder="Buscar tema gramatical... (ej: subjuntivo, ser/estar, pretérito...)" oninput="filtrarTemas()">
+        <span class="search-stats" id="contadorTemas">42 temas</span>
     </div>
+</div>
 
-    <div class="card-grid">
-        <!-- Pretérito Perfecto -->
-        <div class="card">
-            <div class="card-icon"><i class="fas fa-check-circle"></i></div>
-            <h3>Pretérito Perfecto</h3>
-            <div class="sub">"He cantado"</div>
-            <p>Acciones pasadas con relevancia en el presente o en un período no cerrado (hoy, esta semana).</p>
-            <div class="tags"><span>✅ Experiencias</span><span>🕒 Reciente</span></div>
-            <button class="btn-detail" onclick="openModal('perfecto')"><i class="fas fa-plus-circle"></i> Ver más</button>
+<!-- ===== FILTROS ===== -->
+<div class="filter-bar">
+    <label><i class="fas fa-tags"></i> Categoría:</label>
+    <button class="filter-btn active" data-cat="todos" onclick="filtrarCategoria('todos')">Todos <span class="badge" id="totalTodos">42</span></button>
+    <button class="filter-btn" data-cat="verbos" onclick="filtrarCategoria('verbos')">⚡ Verbos <span class="badge" id="totalVerbos">0</span></button>
+    <button class="filter-btn" data-cat="sustantivos" onclick="filtrarCategoria('sustantivos')">📦 Sustantivos <span class="badge" id="totalSustantivos">0</span></button>
+    <button class="filter-btn" data-cat="sintaxis" onclick="filtrarCategoria('sintaxis')">🔗 Sintaxis <span class="badge" id="totalSintaxis">0</span></button>
+    <button class="filter-btn" data-cat="pronombres" onclick="filtrarCategoria('pronombres')">👤 Pronombres <span class="badge" id="totalPronombres">0</span></button>
+    <button class="filter-btn" data-cat="adverbios" onclick="filtrarCategoria('adverbios')">🕒 Adverbios <span class="badge" id="totalAdverbios">0</span></button>
+</div>
+
+<!-- ===== CONTENIDO PRINCIPAL ===== -->
+<div class="main-content">
+
+    <!-- Bienvenida -->
+    <div class="welcome-banner" id="welcomeBanner">
+        <div class="welcome-text">
+            <h2><i class="fas fa-feather-alt"></i> In Xochitl, In Cuicatl</h2>
+            <p id="welcomeMsg">Explora todos los temas gramaticales del español, organizados alfabéticamente. Selecciona el idioma nativo de tu alumno para ver notas específicas.</p>
         </div>
-
-        <!-- Pretérito Indefinido -->
-        <div class="card">
-            <div class="card-icon"><i class="fas fa-calendar-check"></i></div>
-            <h3>Pretérito Indefinido</h3>
-            <div class="sub">"Canté"</div>
-            <p>Acciones puntuales y completadas en el pasado, en un marco temporal cerrado (ayer, en 1999).</p>
-            <div class="tags"><span>⚡ Puntual</span><span>📅 Cerrado</span></div>
-            <button class="btn-detail" onclick="openModal('indefinido')"><i class="fas fa-plus-circle"></i> Ver más</button>
-        </div>
-
-        <!-- Pretérito Imperfecto -->
-        <div class="card">
-            <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
-            <h3>Pretérito Imperfecto</h3>
-            <div class="sub">"Cantaba"</div>
-            <p>Acciones habituales, en progreso o descriptivas en el pasado. Sin foco en el final.</p>
-            <div class="tags"><span>🔄 Hábito</span><span>🌄 Descripción</span></div>
-            <button class="btn-detail" onclick="openModal('imperfecto')"><i class="fas fa-plus-circle"></i> Ver más</button>
-        </div>
-
-        <!-- Pretérito Pluscuamperfecto -->
-        <div class="card">
-            <div class="card-icon"><i class="fas fa-layer-group"></i></div>
-            <h3>Pluscuamperfecto</h3>
-            <div class="sub">"Había cantado"</div>
-            <p>Acción pasada anterior a otra acción también pasada. El "pasado del pasado".</p>
-            <div class="tags"><span>⏳ Anterioridad</span><span>📚 Narración</span></div>
-            <button class="btn-detail" onclick="openModal('pluscuamperfecto')"><i class="fas fa-plus-circle"></i> Ver más</button>
+        <div class="total-count">
+            <span id="totalTemasCount">42</span> temas
         </div>
     </div>
 
-    <!-- ================= SECCIÓN FUTURO ================= -->
-    <div class="section-title">
-        <i class="fas fa-rocket"></i> Futuro
-        <span style="font-size: 1rem; font-weight: 400; color: #6b5f57; margin-left: 10px;">3 formas de expresarlo</span>
+    <!-- Navegador alfabético -->
+    <div class="alfabeto-nav" id="alfabetoNav">
+        <!-- Generado con JavaScript -->
     </div>
 
-    <div class="card-grid">
-        <!-- Futuro Simple -->
-        <div class="card">
-            <div class="card-icon"><i class="fas fa-clock"></i></div>
-            <h3>Futuro Simple</h3>
-            <div class="sub">"Cantaré"</div>
-            <p>Acciones futuras, promesas, o suposiciones sobre el presente. Es el futuro "clásico".</p>
-            <div class="tags"><span>🔮 Predicción</span><span>🤝 Promesa</span></div>
-            <button class="btn-detail" onclick="openModal('futuroSimple')"><i class="fas fa-plus-circle"></i> Ver más</button>
-        </div>
-
-        <!-- Futuro Compuesto -->
-        <div class="card">
-            <div class="card-icon"><i class="fas fa-double-check"></i></div>
-            <h3>Futuro Compuesto</h3>
-            <div class="sub">"Habré cantado"</div>
-            <p>Acción que ya estará terminada en un momento específico del futuro. También para suposiciones sobre el pasado.</p>
-            <div class="tags"><span>✅ Completado</span><span>🔍 Suposición</span></div>
-            <button class="btn-detail" onclick="openModal('futuroCompuesto')"><i class="fas fa-plus-circle"></i> Ver más</button>
-        </div>
-
-        <!-- Futuro Perifrástico -->
-        <div class="card">
-            <div class="card-icon"><i class="fas fa-arrow-right"></i></div>
-            <h3>Futuro Perifrástico</h3>
-            <div class="sub">"Voy a cantar"</div>
-            <p>Expresa intención o inmediatez. Muy común en el habla coloquial. Equivale a "going to".</p>
-            <div class="tags"><span>🗣️ Coloquial</span><span>⚡ Inmediatez</span></div>
-            <button class="btn-detail" onclick="openModal('futuroPerifrastico')"><i class="fas fa-plus-circle"></i> Ver más</button>
-        </div>
-    </div>
-
-    <!-- ================= LLAMADA A GITHUB ================= -->
-    <div class="github-cta">
-        <h2><i class="fab fa-github"></i> Portal de Clases ELE</h2>
-        <p>Este es el inicio de un gran proyecto. Todos los materiales, para todos los niveles y lenguas nativas, estarán organizados en este repositorio.</p>
-        <a href="#" class="btn-gh" onclick="alert('¡Enlace a tu repositorio de Github! Aquí iría la URL.')">
-            <i class="fab fa-github"></i> Ver repositorio completo
-        </a>
-        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.6;">
-            Próximos temas: Presente, Subjuntivo, Imperativos, Ser/Estar, y más.
-        </p>
+    <!-- Grid de temas -->
+    <div class="temas-grid" id="temasGrid">
+        <!-- Generado con JavaScript -->
     </div>
 
 </div>
 
-<!-- ================= MODAL (detalle de cada tiempo) ================= -->
-<div id="modalOverlay" class="modal-overlay" onclick="if(event.target===this) closeModal()">
-    <div class="modal-box">
-        <button class="close-btn" onclick="closeModal()">&times;</button>
-        <div id="modalContent">
-            <!-- El contenido se inyecta con JavaScript -->
+<!-- ===== FOOTER ===== -->
+<footer class="footer-azteca">
+    <div class="footer-content">
+        <div>
+            <h4><i class="fas fa-feather-alt"></i> Calmecac Machtiliztli</h4>
+            <p>Portal educativo inspirado en los <em>calmecac</em>, centros de conocimiento del México prehispánico. Uniendo tradición y tecnología para la enseñanza del español.</p>
+        </div>
+        <div>
+            <h4><i class="fas fa-book-open"></i> Enfoque L1</h4>
+            <ul>
+                <li>🇬🇧 Para hablantes de inglés</li>
+                <li>🇷🇺 Для русскоязычных</li>
+                <li>🇯🇵 日本語話者向け</li>
+                <li>🌍 Más lenguas próximamente</li>
+            </ul>
+        </div>
+        <div>
+            <h4><i class="fas fa-sitemap"></i> Temas destacados</h4>
+            <ul>
+                <li>Pretérito Perfecto</li>
+                <li>Subjuntivo</li>
+                <li>Ser vs Estar</li>
+                <li>Por vs Para</li>
+            </ul>
+        </div>
+        <div>
+            <h4><i class="fab fa-github"></i> Proyecto</h4>
+            <ul>
+                <li><a href="#" style="color:#8a7a6e; text-decoration:none;" onclick="alert('¡Próximamente en GitHub!')">Repositorio en GitHub</a></li>
+                <li>Contribuciones abiertas</li>
+                <li>Licencia MIT</li>
+            </ul>
         </div>
     </div>
-</div>
+    <div class="footer-bottom">
+        <i class="fas fa-feather-alt"></i> Calmecac Machtiliztli · Portal de Clases ELE · 
+        <i class="fas fa-code"></i> Hecho con <i class="fas fa-heart" style="color:#e8a87c;"></i> para la enseñanza del español
+    </div>
+</footer>
 
+<!-- ===== SCRIPT ===== -->
 <script>
-    // ========== DATOS DE CADA TIEMPO VERBAL (CON ENFOQUE L1) ==========
-    const tiemposData = {
-        perfecto: {
-            titulo: 'Pretérito Perfecto',
-            icono: 'fa-check-circle',
-            descripcion: 'Se usa para hablar de experiencias pasadas que tienen conexión con el presente, o acciones ocurridas en un período de tiempo que aún no ha terminado (hoy, esta semana, este año).',
-            ejemplo: 'Ejemplo: <strong>He comido</strong> paella muchas veces.',
-            notas: {
-                es: 'Para hispanohablantes: es muy natural en España; en América se usa menos que el Indefinido.',
-                en: 'For English speakers: similar to the Present Perfect ("I have eaten"). Key: use it with "hoy", "este mes".',
-                ru: 'Для русскоязычных: похоже на прошедшее время совершенного вида, но с фокусом на результат в настоящем.',
-                ja: '日本語話者へ: 現在との関連がある過去の経験を表します。「〜したことがある」に似ています。'
-            }
-        },
-        indefinido: {
-            titulo: 'Pretérito Indefinido',
-            icono: 'fa-calendar-check',
-            descripcion: 'Acciones puntuales y finalizadas en el pasado, en un marco temporal claramente cerrado y separado del presente (ayer, el año pasado, en 2010).',
-            ejemplo: 'Ejemplo: <strong>Canté</strong> en el concierto de anoche.',
-            notas: {
-                es: 'Es el pasado "histórico" o narrativo. Muy usado en todo el mundo hispano.',
-                en: 'For English speakers: equivalent to the Past Simple ("I sang"). Use with specific past time markers.',
-                ru: 'Для русских: соответствует прошедшему времени совершенного вида (я спел). Действие завершено в прошлом.',
-                ja: '日本語: 過去の完了した動作を表します。明確な過去の時間とともに使います。'
-            }
-        },
-        imperfecto: {
-            titulo: 'Pretérito Imperfecto',
-            icono: 'fa-hourglass-half',
-            descripcion: 'Describe acciones habituales, en progreso o que sirven como descripción de fondo en el pasado. No indica si la acción terminó o no.',
-            ejemplo: 'Ejemplo: Cuando era niño, <strong>cantaba</strong> en el coro.',
-            notas: {
-                es: 'Ideal para descripciones y rutinas pasadas. Se contrasta con el Indefinido.',
-                en: 'For English: "used to" or "was singing". Describes ongoing or habitual past actions.',
-                ru: 'Для русских: несовершенный вид в прошлом (я пел). Описание фоновых действий.',
-                ja: '日本語: 過去の習慣や進行中の動作を表します。「〜していた」「〜したものだ」のニュアンス。'
-            }
-        },
-        pluscuamperfecto: {
-            titulo: 'Pretérito Pluscuamperfecto',
-            icono: 'fa-layer-group',
-            descripcion: 'Expresa una acción pasada que ocurrió antes de otra acción también pasada. Es el "pasado del pasado".',
-            ejemplo: 'Ejemplo: Cuando llegué, ellos ya <strong>habían cantado</strong>.',
-            notas: {
-                es: 'Se usa mucho en narraciones y cuentos para ordenar eventos.',
-                en: 'Equivalent to the Past Perfect ("had sung"). Used to sequence past events.',
-                ru: 'Для русских: соответствует прошедшему времени совершенного вида в предпрошедшем (я уже спел).',
-                ja: '日本語: 過去のある時点よりも前に完了していた動作。「〜してしまっていた」に相当。'
-            }
-        },
-        futuroSimple: {
-            titulo: 'Futuro Simple',
-            icono: 'fa-clock',
-            descripcion: 'Indica acciones futuras, promesas, predicciones o suposiciones sobre el presente. Se forma con el infinitivo + terminaciones especiales.',
-            ejemplo: 'Ejemplo: Mañana <strong>cantaré</strong> en la fiesta.',
-            notas: {
-                es: 'También se usa para expresar probabilidad en el presente: "Serán las 10".',
-                en: 'Equivalent to "will" + infinitive. Used for predictions and promises.',
-                ru: 'Для русских: будущее время (я буду петь). Также для предположений о настоящем.',
-                ja: '日本語: 「〜するだろう」「〜するつもりだ」の意味。未来の予測や約束に使います。'
-            }
-        },
-        futuroCompuesto: {
-            titulo: 'Futuro Compuesto',
-            icono: 'fa-double-check',
-            descripcion: 'Expresa una acción que ya estará terminada en un momento futuro. También se usa para suposiciones sobre el pasado reciente.',
-            ejemplo: 'Ejemplo: Para las 8, ya <strong>habré cantado</strong> mi canción.',
-            notas: {
-                es: 'Es el "futuro perfecto". Muy útil para hipótesis.',
-                en: 'Equivalent to "will have" + past participle. Focus on completion before a future time.',
-                ru: 'Для русских: будущее время совершенного вида (я уже спою). Действие будет завершено к моменту.',
-                ja: '日本語: 未来のある時点で完了している動作を表します。「〜してしまっているだろう」の意味。'
-            }
-        },
-        futuroPerifrastico: {
-            titulo: 'Futuro Perifrástico',
-            icono: 'fa-arrow-right',
-            descripcion: 'Se forma con el verbo "ir" + a + infinitivo. Expresa intención, planes o inmediatez. Es muy común en el habla cotidiana.',
-            ejemplo: 'Ejemplo: <strong>Voy a cantar</strong> en el karaoke esta noche.',
-            notas: {
-                es: 'Es la forma más natural en español coloquial para expresar futuro cercano.',
-                en: 'Equivalent to "going to" + infinitive. Used for intentions and near future.',
-                ru: 'Для русских: похоже на конструкцию "собираться + инфинитив". Выражает намерение.',
-                ja: '日本語: 「〜するつもりだ」「〜しようとしている」の意味。口語でよく使われます。'
-            }
-        }
-    };
+    // ===============================================
+    // 1. DATOS: TODOS LOS TEMAS (orden alfabético)
+    // ===============================================
+    const temasData = [
+        // VERBOS
+        { id: 'condicional', nombre: 'Condicional Simple', desc: 'Acciones hipotéticas o cortesía (cantaría).', icono: 'fa-hourglass-half', categoria: 'verbos', status: 'disponible', url: '/modulos/condicional/' },
+        { id: 'futuro-compuesto', nombre: 'Futuro Compuesto', desc: 'Acción terminada en el futuro (habré cantado).', icono: 'fa-double-check', categoria: 'verbos', status: 'disponible', url: '/modulos/futuro/compuesto/' },
+        { id: 'futuro-perifrastico', nombre: 'Futuro Perifrástico', desc: 'Intención o inmediatez (voy a cantar).', icono: 'fa-arrow-right', categoria: 'verbos', status: 'disponible', url: '/modulos/futuro/perifrastico/' },
+        { id: 'futuro-simple', nombre: 'Futuro Simple', desc: 'Predicciones y promesas (cantaré).', icono: 'fa-clock', categoria: 'verbos', status: 'disponible', url: '/modulos/futuro/simple/' },
+        { id: 'gerundio', nombre: 'Gerundio', desc: 'Acciones en progreso (-ando, -iendo).', icono: 'fa-spinner', categoria: 'verbos', status: 'desarrollo', url: '#' },
+        { id: 'imperativo', nombre: 'Imperativo', desc: 'Órdenes, consejos y peticiones.', icono: 'fa-exclamation-circle', categoria: 'verbos', status: 'proximo', url: '#' },
+        { id: 'infinitivo', nombre: 'Infinitivo', desc: 'Forma no personal del verbo (-ar, -er, -ir).', icono: 'fa-infinity', categoria: 'verbos', status: 'desarrollo', url: '#' },
+        { id: 'participio', nombre: 'Participio', desc: 'Forma no personal (-ado, -ido) para tiempos compuestos.', icono: 'fa-check-double', categoria: 'verbos', status: 'desarrollo', url: '#' },
+        { id: 'pluscuamperfecto', nombre: 'Pluscuamperfecto', desc: 'Pasado anterior a otro pasado (había cantado).', icono: 'fa-layer-group', categoria: 'verbos', status: 'disponible', url: '/modulos/pasado/pluscuamperfecto/' },
+        { id: 'presente', nombre: 'Presente de Indicativo', desc: 'Acciones actuales, habituales o verdades universales.', icono: 'fa-sun', categoria: 'verbos', status: 'proximo', url: '#' },
+        { id: 'presente-subjuntivo', nombre: 'Presente de Subjuntivo', desc: 'Deseos, dudas y emociones (cante).', icono: 'fa-moon', categoria: 'verbos', status: 'proximo', url: '#' },
+        { id: 'preterito-imperfecto', nombre: 'Pretérito Imperfecto', desc: 'Hábitos y descripciones en el pasado (cantaba).', icono: 'fa-hourglass-half', categoria: 'verbos', status: 'disponible', url: '/modulos/pasado/imperfecto/' },
+        { id: 'preterito-indefinido', nombre: 'Pretérito Indefinido', desc: 'Acciones puntuales y completadas (canté).', icono: 'fa-calendar-check', categoria: 'verbos', status: 'disponible', url: '/modulos/pasado/indefinido/' },
+        { id: 'preterito-perfecto', nombre: 'Pretérito Perfecto', desc: 'Pasado con relevancia actual (he cantado).', icono: 'fa-check-circle', categoria: 'verbos', status: 'disponible', url: '/modulos/pasado/perfecto/' },
+        { id: 'subjuntivo', nombre: 'Subjuntivo (General)', desc: 'El modo de la subjetividad: deseos, dudas, emociones.', icono: 'fa-cloud', categoria: 'verbos', status: 'proximo', url: '#' },
 
-    // ========== FUNCIONES ==========
-    let currentLang = 'es'; // idioma por defecto (español)
+        // SUSTANTIVOS
+        { id: 'articulos', nombre: 'Artículos', desc: 'Determinados (el, la) e indeterminados (un, una).', icono: 'fa-hashtag', categoria: 'sustantivos', status: 'desarrollo', url: '#' },
+        { id: 'diminutivos', nombre: 'Diminutivos y Aumentativos', desc: 'Sufijos que modifican el tamaño o significado (-ito, -ón).', icono: 'fa-compress-alt', categoria: 'sustantivos', status: 'proximo', url: '#' },
+        { id: 'genero', nombre: 'Género de los Sustantivos', desc: 'Masculino y femenino en español.', icono: 'fa-venus-mars', categoria: 'sustantivos', status: 'desarrollo', url: '#' },
+        { id: 'plural', nombre: 'Plural de Sustantivos', desc: 'Formación del plural (-s, -es).', icono: 'fa-copy', categoria: 'sustantivos', status: 'desarrollo', url: '#' },
+        { id: 'sustantivos', nombre: 'Sustantivos (General)', desc: 'Tipos, clasificación y usos.', icono: 'fa-cube', categoria: 'sustantivos', status: 'desarrollo', url: '#' },
 
+        // PRONOMBRES
+        { id: 'demostrativos', nombre: 'Demostrativos', desc: 'Este, ese, aquel y sus variantes.', icono: 'fa-hand-point-right', categoria: 'pronombres', status: 'desarrollo', url: '#' },
+        { id: 'indefinidos', nombre: 'Indefinidos', desc: 'Alguien, nadie, algo, nada, etc.', icono: 'fa-question', categoria: 'pronombres', status: 'proximo', url: '#' },
+        { id: 'posesivos', nombre: 'Posesivos', desc: 'Mi, tu, su, nuestro, etc.', icono: 'fa-user-check', categoria: 'pronombres', status: 'desarrollo', url: '#' },
+        { id: 'pronombres-objeto', nombre: 'Pronombres de Objeto', desc: 'Me, te, lo, la, le, nos, os, los, las, les.', icono: 'fa-user-cog', categoria: 'pronombres', status: 'desarrollo', url: '#' },
+        { id: 'pronombres-personales', nombre: 'Pronombres Personales', desc: 'Yo, tú, él, ella, usted, nosotros, etc.', icono: 'fa-user-friends', categoria: 'pronombres', status: 'desarrollo', url: '#' },
+        { id: 'reflexivos', nombre: 'Reflexivos y Recíprocos', desc: 'Me, te, se, nos, os (acción reflexiva o mutua).', icono: 'fa-redo-alt', categoria: 'pronombres', status: 'proximo', url: '#' },
+        { id: 'relativos', nombre: 'Relativos', desc: 'Que, quien, cuyo, el cual, etc.', icono: 'fa-link', categoria: 'pronombres', status: 'proximo', url: '#' },
+
+        // ADVERBIOS
+        { id: 'adverbios-frecuencia', nombre: 'Adverbios de Frecuencia', desc: 'Siempre, nunca, a veces, etc.', icono: 'fa-clock', categoria: 'adverbios', status: 'desarrollo', url: '#' },
+        { id: 'adverbios-lugar', nombre: 'Adverbios de Lugar', desc: 'Aquí, allí, cerca, lejos, etc.', icono: 'fa-map-pin', categoria: 'adverbios', status: 'desarrollo', url: '#' },
+        { id: 'adverbios-modo', nombre: 'Adverbios de Modo', desc: 'Bien, mal, rápidamente, etc.', icono: 'fa-arrows-alt', categoria: 'adverbios', status: 'desarrollo', url: '#' },
+        { id: 'adverbios-tiempo', nombre: 'Adverbios de Tiempo', desc: 'Hoy, mañana, ayer, pronto, etc.', icono: 'fa-calendar-alt', categoria: 'adverbios', status: 'desarrollo', url: '#' },
+
+        // SINTAXIS
+        { id: 'comparativos', nombre: 'Comparativos y Superlativos', desc: 'Más... que, el más... de, mejor, peor.', icono: 'fa-balance-scale', categoria: 'sintaxis', status: 'proximo', url: '#' },
+        { id: 'conectores', nombre: 'Conectores y Marcadores', desc: 'Y, pero, porque, aunque, sin embargo, etc.', icono: 'fa-code-branch', categoria: 'sintaxis', status: 'desarrollo', url: '#' },
+        { id: 'oraciones-condicionales', nombre: 'Oraciones Condicionales', desc: 'Si + presente/futuro/subjuntivo.', icono: 'fa-code-branch', categoria: 'sintaxis', status: 'proximo', url: '#' },
+        { id: 'oraciones-subordinadas', nombre: 'Oraciones Subordinadas', desc: 'Sustantivas, adjetivas y adverbiales.', icono: 'fa-sitemap', categoria: 'sintaxis', status: 'proximo', url: '#' },
+        { id: 'por-para', nombre: 'Por vs Para', desc: 'Las dos preposiciones más difíciles para estudiantes.', icono: 'fa-exchange-alt', categoria: 'sintaxis', status: 'desarrollo', url: '#' },
+        { id: 'preposiciones', nombre: 'Preposiciones', desc: 'A, ante, bajo, con, contra, de, desde, etc.', icono: 'fa-arrow-right', categoria: 'sintaxis', status: 'desarrollo', url: '#' },
+        { id: 'ser-estar', nombre: 'Ser vs Estar', desc: 'Los dos verbos "ser" y sus diferencias.', icono: 'fa-code-branch', categoria: 'sintaxis', status: 'desarrollo', url: '#' },
+
+        // OTROS (complementos)
+        { id: 'acentuacion', nombre: 'Acentuación y Tilde', desc: 'Reglas de acentuación en español.', icono: 'fa-exclamation-triangle', categoria: 'sintaxis', status: 'desarrollo', url: '#' },
+        { id: 'exclamativos', nombre: 'Exclamativos e Interrogativos', desc: 'Qué, cuál, quién, cómo, dónde, etc.', icono: 'fa-question-circle', categoria: 'sintaxis', status: 'proximo', url: '#' },
+        { id: 'negacion', nombre: 'Negación en Español', desc: 'No, nunca, tampoco, ni... ni.', icono: 'fa-ban', categoria: 'sintaxis', status: 'desarrollo', url: '#' },
+        { id: 'voz-pasiva', nombre: 'Voz Pasiva', desc: 'Ser + participio (La carta fue escrita).', icono: 'fa-exchange-alt', categoria: 'sintaxis', status: 'proximo', url: '#' },
+    ];
+
+    // ===============================================
+    // 2. ESTADO GLOBAL
+    // ===============================================
+    let currentLang = 'es';
+    let currentFilter = 'todos';
+    let searchTerm = '';
+
+    // ===============================================
+    // 3. FUNCIONES
+    // ===============================================
+
+    // Cambiar idioma
     function changeLang(lang) {
         currentLang = lang;
-        // Actualizar botones activos
         document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.dataset.lang === lang) btn.classList.add('active');
+            btn.classList.toggle('active', btn.dataset.lang === lang);
         });
 
-        // Cambiar mensaje de bienvenida
-        const msgMap = {
-            es: 'Bienvenido, profesor. Aquí tienes los materiales para enseñar Pasado y Futuro. Selecciona el idioma nativo de tu alumno para ver sugerencias específicas.',
-            en: 'Welcome, teacher. Here you have materials to teach Past and Future. Select your student\'s native language for specific tips.',
-            ru: 'Добро пожаловать, преподаватель. Здесь материалы для обучения прошедшему и будущему времени. Выберите родной язык ученика для специальных подсказок.',
-            ja: '先生、ようこそ。ここでは過去と未来の教材があります。生徒の母語を選んで具体的なヒントを表示します。'
+        const msgs = {
+            es: 'Explora todos los temas gramaticales del español, organizados alfabéticamente. Selecciona el idioma nativo de tu alumno para ver notas específicas.',
+            en: 'Explore all Spanish grammar topics, organized alphabetically. Select your student\'s native language for specific notes.',
+            ru: 'Изучите все темы грамматики испанского языка, организованные в алфавитном порядке. Выберите родной язык ученика для специальных примечаний.',
+            ja: 'スペイン語の文法トピックをすべてアルファベット順に探索します。生徒の母語を選択して特定の注意事項を表示します。'
         };
-        document.getElementById('welcomeText').textContent = msgMap[lang] || msgMap.es;
+        document.getElementById('welcomeMsg').textContent = msgs[lang] || msgs.es;
+
+        // Actualizar badges de idioma en los temas (simulado)
+        renderTemas();
     }
 
-    function openModal(tiempoId) {
-        const data = tiemposData[tiempoId];
-        if (!data) return;
-
-        const modal = document.getElementById('modalOverlay');
-        const content = document.getElementById('modalContent');
-
-        // Construir el HTML con la nota específica del idioma seleccionado
-        const nota = data.notas[currentLang] || data.notas.es;
-
-        content.innerHTML = `
-            <h2><i class="fas ${data.icono}"></i> ${data.titulo}</h2>
-            <div class="modal-sub">Tiempo verbal del ${tiempoId.includes('futuro') ? 'Futuro' : 'Pasado'}</div>
-            <p>${data.descripcion}</p>
-            <div class="example">${data.ejemplo}</div>
-            <div class="lang-note">
-                <i class="fas fa-lightbulb"></i> 
-                <strong>Enfoque para ${currentLang === 'es' ? 'hispanohablantes' : currentLang === 'en' ? 'anglófonos' : currentLang === 'ru' ? 'rusohablantes' : 'japoneses'}:</strong>
-                ${nota}
-            </div>
-            <p style="margin-top: 20px; font-size: 0.9rem; color: #6b5f57;">
-                <i class="fas fa-arrow-right"></i> Recuerda adaptar los ejemplos a la cultura de tu alumno.
-            </p>
-        `;
-
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+    // Navegador alfabético
+    function generarAlfabeto() {
+        const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        const nav = document.getElementById('alfabetoNav');
+        nav.innerHTML = letras.map(letra => 
+            `<a href="#" data-letra="${letra}" onclick="filtrarPorLetra('${letra}')">${letra}</a>`
+        ).join('');
+        // Añadir "Todos"
+        nav.innerHTML = `<a href="#" data-letra="todos" onclick="filtrarPorLetra('todos')" class="letter-active">★</a>` + nav.innerHTML;
     }
 
-    function closeModal() {
-        document.getElementById('modalOverlay').classList.remove('active');
-        document.body.style.overflow = 'auto';
+    // Filtrar por letra
+    let letraActual = 'todos';
+
+    function filtrarPorLetra(letra) {
+        letraActual = letra;
+        document.querySelectorAll('#alfabetoNav a').forEach(el => el.classList.remove('letter-active'));
+        const target = document.querySelector(`#alfabetoNav a[data-letra="${letra}"]`);
+        if (target) target.classList.add('letter-active');
+        renderTemas();
     }
 
-    // Cerrar con ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-    });
+    // Filtrar por categoría
+    function filtrarCategoria(cat) {
+        currentFilter = cat;
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.cat === cat);
+        });
+        renderTemas();
+    }
 
-    // Pequeño efecto: al cargar, mostrar idioma por defecto
+    // Buscador
+    function filtrarTemas() {
+        searchTerm = document.getElementById('buscador').value.toLowerCase().trim();
+        renderTemas();
+    }
+
+    // Renderizar temas
+    function renderTemas() {
+        const grid = document.getElementById('temasGrid');
+        const contador = document.getElementById('contadorTemas');
+        const totalSpan = document.getElementById('totalTemasCount');
+
+        let filtrados = [...temasData];
+
+        // Filtro por categoría
+        if (currentFilter !== 'todos') {
+            filtrados = filtrados.filter(t => t.categoria === currentFilter);
+        }
+
+        // Filtro por letra
+        if (letraActual !== 'todos') {
+            filtrados = filtrados.filter(t => t.nombre.toUpperCase().startsWith(letraActual));
+        }
+
+        // Filtro por búsqueda
+        if (searchTerm) {
+            filtrados = filtrados.filter(t => 
+                t.nombre.toLowerCase().includes(searchTerm) || 
+                t.desc.toLowerCase().includes(searchTerm) ||
+                t.categoria.toLowerCase().includes(searchTerm)
+            );
+        }
+
+        // Orden alfabético
+        filtrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+        // Actualizar contadores
+        contador.textContent = `${filtrados.length} temas`;
+        totalSpan.textContent = temasData.length;
+
+        // Actualizar badges de categorías
+        actualizarBadges();
+
+        // Renderizar cards
+        if (filtrados.length === 0) {
+            grid.innerHTML = `
+                <div style="grid-column:1/-1; text-align:center; padding:60px 20px; background:white; border-radius:24px;">
+                    <i class="fas fa-search" style="font-size:3rem; color:#e8a87c; margin-bottom:16px;"></i>
+                    <h3 style="color:#1a1a2e;">No se encontraron temas</h3>
+                    <p style="color:#6b5f57;">Prueba con otra búsqueda o categoría.</p>
+                </div>
+            `;
+            return;
+        }
+
+        grid.innerHTML = filtrados.map((tema, index) => {
+            const statusText = {
+                'disponible': '✅ Disponible',
+                'desarrollo': '🔄 En desarrollo',
+                'proximo': '⏳ Próximamente'
+            }[tema.status] || tema.status;
+
+            const statusClass = {
+                'disponible': 'status-disponible',
+                'desarrollo': 'status-desarrollo',
+                'proximo': 'status-proximo'
+            }[tema.status] || '';
+
+            const disabled = tema.status !== 'disponible' ? 'disabled' : '';
+
+            // Icono de categoría
+            const catIcons = {
+                'verbos': '⚡',
+                'sustantivos': '📦',
+                'sintaxis': '🔗',
+                'pronombres': '👤',
+                'adverbios': '🕒'
+            };
+            const catIcon = catIcons[tema.categoria] || '📚';
+
+            return `
+                <div class="tema-card ${disabled}" style="animation-delay: ${index * 0.03}s;">
+                    <div class="card-header">
+                        <div class="tema-nombre">
+                            ${tema.nombre}
+                            <small>${catIcon} ${tema.categoria}</small>
+                        </div>
+                        <div class="tema-icon">
+                            <i class="fas ${tema.icono}"></i>
+                        </div>
+                    </div>
+                    <div class="tema-desc">${tema.desc}</div>
+                    <div class="tema-meta">
+                        <span class="categoria-tag">${tema.categoria}</span>
+                        <span class="status-tag ${statusClass}">${statusText}</span>
+                    </div>
+                    <a href="${tema.url}" class="btn-ir" onclick="if('${tema.status}'!=='disponible') { event.preventDefault(); alert('Este tema estará disponible próximamente. ¡Sigue en desarrollo!'); }">
+                        ${tema.status === 'disponible' ? 'Ir al tema' : 'En preparación'} 
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Actualizar badges de categorías
+    function actualizarBadges() {
+        const categorias = ['verbos', 'sustantivos', 'sintaxis', 'pronombres', 'adverbios'];
+        categorias.forEach(cat => {
+            const count = temasData.filter(t => t.categoria === cat).length;
+            const badge = document.getElementById(`total${cat.charAt(0).toUpperCase() + cat.slice(1)}`);
+            if (badge) badge.textContent = count;
+        });
+        document.getElementById('totalTodos').textContent = temasData.length;
+    }
+
+    // ===============================================
+    // 4. INICIALIZACIÓN
+    // ===============================================
     document.addEventListener('DOMContentLoaded', () => {
-        changeLang('es');
+        generarAlfabeto();
+        renderTemas();
+        // Resetear buscador con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('buscador').value = '';
+                searchTerm = '';
+                renderTemas();
+            }
+        });
     });
+
+    // Exponer funciones globalmente
+    window.changeLang = changeLang;
+    window.filtrarCategoria = filtrarCategoria;
+    window.filtrarTemas = filtrarTemas;
+    window.filtrarPorLetra = filtrarPorLetra;
 </script>
 
 </body>
